@@ -1,0 +1,436 @@
+
+/*
+==Mixins
+*/
+@mixin breakpoint($point){
+	@if $point == medium {
+		@media (min-width:721px){@content;}
+	}
+	@if $point == small {
+		@media (max-width:720px){@content;}
+	}
+	@if $point == smallH {
+		@media (max-height:500px){@content;}
+	}
+}
+
+
+/*
+==Colors
+*/
+$main: #FEFDFB;
+$secondary: #16262B;
+$secondary-l1:#7F888B;
+$secondary-l2:#8F9DA6;
+$accent:#FFBA49;
+//https://coolors.co/ffba49-20a39e-16262b-334d5c-fefdfb
+	
+/*
+==Global
+*/
+*{
+	box-sizing: border-box;	
+}
+body{
+	font-family:'Open Sans', sans-serif;
+	font-weight:400;
+	font-size:100%;
+	font-size:16px;
+	letter-spacing:.03rem;
+	width:100%;
+	text-align:center;
+	color:$secondary;
+	position:relative;
+}
+a, a:active, a:visited, a:focus,
+span.button, span.button:active, span.button:visited, span.button:focus{
+	text-decoration:none;
+	color:$secondary;
+  transition:all 0.6s ease;
+	cursor:pointer;
+}
+a:hover{
+	color:$secondary-l1;
+}
+p a, p a:active, p a:visited, p a:focus{
+	color:$secondary-l2;
+	text-decoration:underline;
+
+}
+p a:hover{
+	color:$accent;
+}
+span.button:hover{
+  transition:all 0.6s ease;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family:"Rajdhani";
+	font-size:1.75rem;
+	line-height:1.6rem;
+	letter-spacing:.12rem;
+	font-weight:600;
+}
+a.button, input.button, span.button{
+	background:$accent;
+	color:$secondary;
+	font-weight:600;
+	padding:.9rem 1.5rem;
+	letter-spacing:.12rem;
+	text-transform:uppercase;
+	margin:1rem;
+	border-radius:5px;
+	display:inline-block;
+}
+a.button:hover, input.button:hover , span.button:hover{
+	padding:.9rem 1.8rem; 
+	letter-spacing:.18rem;
+}
+
+// Header Styles
+header{
+	position:relative;
+	width:100%;
+	padding:80px 0rem 1.5rem;
+	background:url(images/headback.jpeg) no-repeat;
+	background-size:cover;
+	background-position:center;
+	height:100vh;
+	h1{
+		text-indent:-99999px;
+		width:90px;
+		height:90px;
+		border-radius:60px;
+		margin:15px auto 10px;
+		background:url(
+			http://csaldesign.com/csaldesign/images/logo.svg) no-repeat;
+		background-size:96%;
+		background-position:center;
+		background-color:$accent;
+		box-shadow:0px 3px 30px $secondary;
+		position:absolute;
+		top:20px;
+		left:0;
+		right:0;
+	}
+	.header-container{
+		// box-shadow:0px 0px 1rem rgba(0, 0, 0, 1);
+		// background:rgba(0,0,0,.6);
+		padding:1rem;
+		position:absolute;
+		top:30%;
+		left:0;
+		right:0;
+	}
+	h2{
+		color: $secondary;
+		max-width:600px;
+		margin:0 auto;
+		font-size:2.6rem; 
+		line-height:3rem;
+		@include breakpoint(small){
+			font-size:2rem;
+			line-height:2.6rem;
+		}
+		@include breakpoint(smallH){
+			font-size:1.5rem;
+			line-height:2rem;
+		}
+		font-weight:500;
+		text-shadow: 0px 0px 12px $secondary-l1;
+}
+	a[href="#specialties"]{
+		font-size:1.5rem;
+		font-family:'Rajdhani';
+		font-weight:500;
+		position:absolute;
+		padding: 5rem 0 2rem;
+		bottom:0;
+		width:100%;
+		left:0;
+		right:0;
+		display:block;
+		text-shadow: 0px 0px 9px $main;
+		background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.10) 15%, rgba(255,255,255,0.95) 90% , rgba(255,255,255,1) 100%);
+	}
+	
+	a[href="#specialties"]:hover{
+			padding: 5rem 0 1rem;
+		}
+	a[href="#specialties"]:after{
+		content:"";
+		display:block;
+		width:2rem;
+		height:2rem;
+		margin:.25rem auto 0;
+		background:url(
+			http://image.flaticon.com/icons/svg/118/118738.svg) no-repeat;
+	}
+}
+
+//Main Section Styles
+main > section,
+footer > section{
+	background:$main;
+	border-top:solid $secondary 3px;
+	padding:6rem 1rem;
+	line-height:1.25rem;
+	> *{
+		max-width:1100px;	
+		margin-left:auto;
+		margin-right:auto;
+	}
+	h2{
+		font-size:3rem;
+		line-height:3.3rem; 
+	}
+	h2 + p {
+		margin-bottom:1.5rem; 
+		font-size: 1.3rem;
+		line-height: 2.1rem;
+	}
+	section{
+		padding:6rem .25rem;
+	}
+	span.aos-init{
+	    display: block;
+	}
+}
+
+// Specialties Styles
+section.specialties{
+	section{
+		@include breakpoint(medium){
+			float:left;
+			width:33.33%;
+		}
+	}
+	h3{
+		font-size: 2.1rem;
+		line-height: 2.4rem;
+	}
+	p{
+		font-size:1.2rem;
+		line-height: 1.8rem;
+	}
+	section h3:after{
+		content:"";
+		display:block;
+		height:200px;
+		width:100%;
+		max-width:150px; 
+		margin: 0 auto; 
+	}
+	section.code h3:after{
+		background:url(
+			http://csaldesign.com/csaldesign/images/code.png) no-repeat center;
+		background-size:contain; 
+	}
+	section.branding h3:after{
+		background:url(
+			http://csaldesign.com/csaldesign/images/branding.png) 
+			no-repeat center;
+		background-size:contain; 
+	}
+	section.ui h3:after{
+		background:url(
+			http://csaldesign.com/csaldesign/images/ui.png) no-repeat center;
+		background-size:contain; 
+	}
+}
+
+// Projects Styles
+section.projects{
+	section{
+		img{
+			display:block;
+			margin:1rem auto;
+			width:100%;
+			max-width:600px;
+			@include breakpoint(medium){
+				float:left;
+				width:60%;
+			}	
+		}
+		@include breakpoint(medium){
+			div{
+				float: right;
+				width: 40%;
+				padding-left: 1rem;
+			}
+		}		
+		h3{
+			font-size: 2.1rem;
+			line-height: 2.4rem;
+		}
+		p.tags{
+			margin-bottom:1.2rem;
+			font-size:1.2rem;
+			text-align: center;
+			color:$secondary-l1;
+		}
+		p{
+			text-align: left;
+			margin-bottom:.5rem;
+		}
+		.button{
+			background:$secondary;
+			color:$accent;
+		}		
+	}
+}
+
+
+//Footer Styles
+footer {
+	color:$main;
+	background:$secondary;
+	border-top:solid $secondary 3px;
+	line-height:1.25rem;
+	overflow:hidden;
+	> section{
+		color:$main;
+		background:$secondary;
+		padding:6rem 1rem;
+		max-width:1100px;	
+		margin-left:auto;
+		margin-right:auto;
+	}
+	
+//Footer Form Styles
+	.form form{
+		opacity:0;
+		display:none;
+		height:0px; 
+		transition:all 9s ease;
+	}
+	form.open{
+		display:block;
+		opacity:1;
+		height:100%; 
+	}
+	.hide{
+		display:none;
+	}
+	.show{
+		display:inline-block;
+	}
+	p:first-child{
+    max-width: 33rem;
+    margin: 0 auto;
+	}
+	span.close{
+		display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border: solid 1px white;
+    border-radius: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+		cursor:pointer;
+	}
+	label {
+		display: block;
+		width:100%;
+    max-width: 30rem;
+    text-align: left;
+		margin: 2.1rem auto 0rem;
+		color: $main;
+	}
+	label input, textarea {
+		font-family:'Open Sans';
+		display:block;
+		font-size:.9rem;
+    width: 100%;
+    padding: 10px;
+    background: none;
+    outline: none;
+		color:$main;
+    resize: none;
+    border: 0;
+    transition: all .3s;
+    border-bottom: 2px solid $main;
+	}
+	input:focus {
+		border-bottom: 2px solid $accent;
+	}
+	input.button{
+		border:none;
+    outline: none;
+		cursor:pointer;
+    resize: none;
+		font-family:'Open Sans', sans-serif;
+		font-size:100%;
+		font-size:16px;
+		font-weight:600;
+		padding:.9rem 1.5rem;
+		margin-top:2rem;
+		letter-spacing:.12rem;
+		transition:all 0.6s ease;
+	}
+	input:hover{
+		letter-spacing:.06rem;
+		transition:all 0.6s ease;
+	}	
+	input.button:hover{
+		padding:.9rem 1.8rem; 
+		letter-spacing:.18rem;
+		transition:all 0.6s ease;
+	}
+	.social{
+		background:$main;
+		color:$secondary;
+		max-width:3000000rem;
+		div {
+			max-width:30rem;	
+			margin:0 auto;
+		}
+		div a{
+			float:left;
+			width:25%;
+		}
+		a:hover{
+				transform: scale(1.2);
+		}
+		div a:before{
+			content:'';
+			display:block;
+			width:2rem;
+			height:2rem;
+			margin:.25rem auto 0;
+		}
+		a.linkedin:before{
+			background:url(
+				http://image.flaticon.com/icons/svg/174/174857.svg) no-repeat;
+		}
+		a.behance:before{
+			background:url(
+				http://image.flaticon.com/icons/svg/174/174837.svg) no-repeat;
+		}
+		a.facebook:before{
+			background:url(					
+http://image.flaticon.com/icons/svg/174/174848.svg) no-repeat;			
+		}
+		a.instagram:before{
+			background:url(					
+http://image.flaticon.com/icons/svg/174/174855.svg) no-repeat;			
+		}
+	}
+	
+	
+}
+
+
+
+//Clearfix
+.cf:before,
+.cf:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+.cf:after {
+	clear: both;
+}
+.cf {
+	*zoom: 1;
+}
